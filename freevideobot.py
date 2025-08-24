@@ -6,7 +6,8 @@ import subprocess
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # Рекомендуется хранить токен в переменных окружения, а не в коде.
-BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '8499873216:AAGuS3i9QbmcptkWmr-2L46CNtvTYSEMp1k')
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+bot = telebot.TeleBot(BOT_TOKEN)
 if not BOT_TOKEN:
     raise ValueError("Необходимо установить переменную окружения TELEGRAM_BOT_TOKEN или указать токен в коде")
 
@@ -300,4 +301,5 @@ def process_download(status_message, original_message, url, choice):
                 os.remove(media_path)
 
 if __name__ == '__main__':
+
     bot.infinity_polling()
